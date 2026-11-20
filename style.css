@@ -1,0 +1,197 @@
+/* Vintage desk homepage v2.
+   Font is selectable in content.js: shared.fontPreset = 'storybook', 'classic', or 'rounded'.
+   The wallpaper covers BOTH the introduction and the folder area. */
+:root{
+  --brown:#4c3933;
+  --brown-dark:#392922;
+  --cream:#fff6e6;
+  --cream-paper:#fff4df;
+  --rust:#9a5147;
+  --ink:#473932;
+  --soft-text:#665147;
+  --stripe-blue:#c6dce1;
+  --stripe-tan:#e0cfb2;
+  --display-font:'Fraunces', Georgia, serif;
+  --body-font:'DM Sans','Noto Sans KR',system-ui,sans-serif;
+  --korean-font:'Gowun Dodum','Noto Sans KR',sans-serif;
+}
+html[data-font-preset="classic"]{
+  --display-font:'DM Serif Display',Georgia,serif;
+  --body-font:'DM Sans','Noto Sans KR',system-ui,sans-serif;
+  --korean-font:'Noto Serif KR',serif;
+}
+html[data-font-preset="rounded"]{
+  --display-font:'Nunito','DM Sans',sans-serif;
+  --body-font:'Nunito','Noto Sans KR',sans-serif;
+  --korean-font:'Gowun Dodum','Noto Sans KR',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  min-height:100svh;
+  background-color:var(--stripe-blue);
+  background-image:repeating-linear-gradient(90deg,var(--stripe-blue) 0 46px,var(--stripe-tan) 46px 92px);
+  color:var(--ink);
+  font-family:var(--body-font);
+  -webkit-font-smoothing:antialiased;
+}
+button{font:inherit;cursor:pointer}a{color:inherit;text-decoration:none}
+h1,h2,h3,p{margin-top:0}
+a:focus-visible,button:focus-visible{outline:3px solid #a2564a;outline-offset:4px}
+.container{width:min(1080px,calc(100% - 88px));margin-inline:auto}
+.grain{position:fixed;inset:0;z-index:20;pointer-events:none;opacity:.08;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.73' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.20'/%3E%3C/svg%3E")}
+/* A slim cream header with only the language toggle. */
+.site-header{height:56px;background:#fff4df;position:relative;z-index:2;border-bottom:1px solid #ead8c3}
+.site-header::after{content:"";position:absolute;left:0;right:0;bottom:-9px;height:9px;background:repeating-linear-gradient(90deg,#ad5b4e 0 16px,#f8eddb 16px 32px);box-shadow:0 1px 0 #aa736b66}
+.header-row{height:100%;display:flex;align-items:center;justify-content:flex-end}
+.language-toggle{display:inline-flex;align-items:center;gap:4px;background:rgba(108,76,57,.055);border:1px solid #d9c2aa;border-radius:26px;padding:3px}
+.language-button{border:0;background:transparent;color:#7c5e51;border-radius:24px;font-size:12px;font-weight:700;padding:7px 12px;transition:background .18s,color .18s}
+.language-button[aria-pressed="true"]{background:#955045;color:#fff7e8}
+.language-sep{opacity:.45;color:#987b68;font-size:11px}
+/* Main intro and folders are now on the SAME striped wallpaper. */
+.landing{min-height:calc(100svh - 56px);display:flex;flex-direction:column;position:relative}
+.landing::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#fff8e61f,#fff8e621);pointer-events:none}
+.hero{position:relative;flex:0 0 clamp(325px,43vh,385px);min-height:325px}
+.hero-inner{position:relative;height:100%;padding:42px 5px 19px;display:grid;grid-template-columns:minmax(0,1fr) 240px;gap:50px;align-items:center}
+.hero-copy{padding:0 0 3px 2px;text-shadow:0 1px 3px #fffae6d9}
+.hero h1{font:400 clamp(63.6px,6.24vw,91.2px)/1.05 var(--display-font);letter-spacing:-.038em;margin:0 0 15.6px}
+.hero h1 span{display:block}
+.hero-hello{color:#493832}
+.hero-name{color:var(--rust);margin-top:1px;white-space:nowrap}
+.hero-subtitle{font-size:15.6px;font-weight:700;letter-spacing:.055em;color:#554137;margin:0;text-shadow:0 1px 3px #fff8ec}
+.hero-interests{display:flex;flex-wrap:wrap;gap:9.6px;margin-top:21.6px;max-width:710px}
+.hero-interest{display:inline-flex;align-items:center;padding:9.6px 14.4px;background:rgba(255,241,224,.88);border:1px solid #cfae9c;color:#81544e;font-size:13.2px;line-height:1.3;font-weight:700;letter-spacing:.01em;box-shadow:0 1px 4px #66534d11}
+/* Paperclip stationery, only on the right. */
+.contact-note{
+  width:100%;min-height:226px;position:relative;align-self:center;
+  padding:29px 23px 19px;
+  transform:rotate(1.6deg);
+  background:#fff9ee;
+  border:8px solid #fffdf6;
+  box-shadow:0 9px 0 #72574929,0 14px 28px #60433b24;
+}
+.contact-note::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,#b9917206 0 2px,transparent 2px 5px);pointer-events:none}
+.note-paperclip{
+  position:absolute;top:-20px;right:20px;width:21px;height:60px;
+  border:2.5px solid #67544a;border-radius:12px 12px 10px 10px;
+  transform:rotate(-6deg);z-index:3;box-shadow:2px 1px 0 #fff9ef;
+}
+.note-paperclip::after{content:"";position:absolute;width:10px;height:43px;border:2px solid #67544a;border-bottom:0;border-radius:8px 8px 0 0;top:9px;left:3px}
+.note-brow{position:relative;color:#b07868;font-size:9px;font-weight:700;letter-spacing:.15em;margin:0 0 9px}
+.contact-note h2{position:relative;font:400 29px/1.1 var(--display-font);margin:0 0 16px;color:#623f36}
+.quick-links{position:relative;display:flex;flex-direction:column;align-items:stretch;gap:11px}
+.quick-link{display:flex;align-items:center;gap:7px;border-bottom:1px solid #dcc9b4;padding:0 0 7px;color:#69493f;font-size:11px;font-weight:700;min-width:0;transition:color .18s}
+.quick-link:last-child{border-bottom:none;padding-bottom:0}
+.quick-link:hover{color:#ab574b}
+.quick-link svg{width:14px;height:14px;flex-shrink:0;stroke:#a45e53}
+.quick-link .link-text{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.quick-link .external{margin-left:auto;font-size:11px;opacity:.7}
+/* Four folders: same colors and shapes, but no dark brown block behind them. */
+.folders-section{position:relative;flex:1;min-height:355px;display:flex;align-items:center;padding:12px 0 20px}
+.folder-layout{display:flex;flex-direction:column;justify-content:center;align-items:center;padding-top:4px}
+.section-topline{text-align:center;margin-bottom:27px;color:#4e382f;text-shadow:0 1px 3px #fffaeb}
+.section-kicker{font-size:10px;letter-spacing:.23em;font-weight:700;color:#8e5546;margin:0 0 10px}
+.section-topline h2{font:400 clamp(24px,2.5vw,33px)/1.08 var(--display-font);letter-spacing:-.018em;margin:0;color:#49342d}
+.section-topline h2 span{color:#a55b4f}
+/* Each folder is intentionally narrow; the grid remains wide to give them air. */
+.folder-grid{display:grid;grid-template-columns:repeat(4,minmax(0,156px));justify-content:space-between;column-gap:42px;row-gap:22px;width:min(860px,100%)}
+.folder-item{display:flex;flex-direction:column;align-items:center;gap:15px;background:transparent;border:0;color:var(--cream);padding:5px 0 3px;min-width:0;transition:transform .2s}
+.folder-item:hover{transform:translateY(-6px)}
+.folder-art{display:block;width:100%;aspect-ratio:1.18;position:relative;filter:drop-shadow(5px 8px 5px #3b2a2342)}
+.folder-tab{position:absolute;top:0;left:0;height:20%;width:40%;border-radius:9px 13px 0 0;background:var(--folder-tab);box-shadow:inset 0 1px 1px #ffffff75}
+.folder-face{position:absolute;inset:15% 0 0;overflow:hidden;border:1px solid #ffffff50;border-radius:10px 10px 12px 12px;background:var(--folder-background);box-shadow:inset 0 10px 14px #fff7eb45,0 0 0 1px #0000000c}
+.folder-face::before{content:"";position:absolute;inset:0;background:var(--folder-pattern,none);opacity:var(--folder-pattern-opacity,1)}
+.folder-face::after{content:"";position:absolute;inset:0;border-top:1px solid #fff8;box-shadow:inset 0 2px 0 #ffffff2a;pointer-events:none}
+.folder-index{position:absolute;z-index:1;right:16px;bottom:13px;color:var(--index-ink,#7c6656);font-size:11px;font-weight:700;letter-spacing:.1em;opacity:.75}
+.folder-label{background:#fff3e0;color:#503d34;padding:8px 14px 8px;min-width:104px;text-align:center;font-size:12px;font-weight:700;letter-spacing:.02em;box-shadow:3px 4px 0 #533e343d;transition:background .2s}
+.folder-item:hover .folder-label,.folder-item:focus-visible .folder-label{background:#f8d8bb}
+
+.footer{text-align:center;padding:18px 16px 4px;color:#684f44;font-size:11px;letter-spacing:.03em;margin:14px 0 0}
+/* Muted stationery colors sampled visually from the folder-photo reference.
+   Keep the same folder shape, shadows and tiny number details. */
+.folder--mocha{--folder-tab:#493631;--folder-background:#58443f;--folder-pattern:linear-gradient(145deg,#866d5b31 0%,transparent 48%,#1b14151f 100%);--index-ink:#f4dfce}
+.folder--cocoa{--folder-tab:#8f7365;--folder-background:#a68d7c;--folder-pattern:linear-gradient(140deg,#e8d1b42c 0%,transparent 52%,#6d494321 100%);--index-ink:#fff3e5}
+.folder--linen{--folder-tab:#ded2be;--folder-background:#eee7db;--folder-pattern:linear-gradient(145deg,#fff9eea6 0%,transparent 70%);--index-ink:#8b786f}
+.folder--rose{--folder-tab:#bb8d91;--folder-background:#d6afb0;--folder-pattern:linear-gradient(145deg,#ffe8e45c 0%,transparent 65%,#ad82822c);--index-ink:#765454}
+.footer{text-align:center;padding:14px 16px 5px;color:#674c42;font-size:11px;letter-spacing:.03em}
+
+.folder-dialog{position:fixed;inset:0;width:100%;height:100%;max-width:none;max-height:none;border:0;margin:0;padding:44px 28px;background:transparent;color:var(--ink);overflow:auto;overscroll-behavior:contain}
+.folder-dialog::backdrop{background:rgba(48,30,24,.83);backdrop-filter:blur(2px)}.folder-dialog[open]{display:flex;align-items:center;justify-content:center}
+.dialog-paper{background:#fff7e9;width:min(880px,100%);min-height:440px;margin:auto;position:relative;padding:58px clamp(32px,6vw,80px) 64px;box-shadow:12px 14px 0 #2e211d78,0 25px 70px #24130d40;border:1px solid #e9ddcb;animation:note-pop .2s ease-out}
+.dialog-paper::before{content:"";position:absolute;inset:0;background:linear-gradient(100deg,#fef6e9 0,#fdf0de 96%);pointer-events:none;z-index:-1}
+.dialog-paperclip{left:44px;right:auto;top:-21px;transform:rotate(-9deg);z-index:5;box-shadow:2px 1px 0 #fff9ef}
+.dialog-close{position:absolute;top:22px;right:24px;border:1px solid #d8bcaa;background:transparent;color:#6f5145;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font-size:25px;line-height:1}.dialog-close:hover{background:#f4e0cf}
+.dialog-kicker{font-size:10px;color:#b36f61;font-weight:700;letter-spacing:.2em;margin:0 0 23px}.dialog-paper h2{font:400 clamp(37px,4.3vw,54px)/1 var(--display-font);letter-spacing:-.03em;margin:0 0 35px}
+.dialog-rule{height:1px;background:#e6d3bf;margin:0 0 32px}.dialog-content{font-size:15px;line-height:1.95;color:#604c43}.dialog-content p{margin:0 0 18px}.dialog-content p:last-child{margin-bottom:0}
+.about-dialog-layout{display:grid;grid-template-columns:minmax(0,1.4fr) 220px;gap:42px;align-items:start}.about-photo{background:#fffdf7;padding:9px 9px 24px;box-shadow:4px 5px 14px #77564821;transform:rotate(2deg);border:1px solid #e8d9c8}.about-photo img{width:100%;aspect-ratio:4/5;object-fit:cover;display:block;background:#ddcbb9}
+.dialog-list{display:grid;gap:0}.info-entry{padding:17px 0;border-top:1px solid #e7d4c3}.info-entry:first-child{padding-top:0;border-top:0}.entry-overline{color:#b06e60;font-size:11px;font-weight:700;letter-spacing:.06em;margin-bottom:7px}.info-entry h3{font-size:16px;color:#403028;margin:0 0 4px}.info-entry p{font-size:13px;color:#736257;line-height:1.85;margin:0}.interest-tags{display:flex;flex-wrap:wrap;gap:10px;margin:25px 0}.interest-tag{font-size:12px;font-weight:700;border:1px solid #d9bdab;background:#f7e6d5;color:#835146;padding:8px 13px}.dialog-note{font-size:12px!important;color:#8d7567!important}
+.skill-groups{display:grid;gap:23px;margin-top:26px}
+.skill-group{border-top:1px solid #e7d4c3;padding-top:17px}
+.skill-group-title{font-size:13px;letter-spacing:.015em;color:#6b493e;margin:0 0 12px;font-weight:700}
+.skill-tags{display:flex;flex-wrap:wrap;gap:8px}
+.skill-tag{font-size:12px;font-weight:600;border:1px solid #ddc6b6;background:#f9ebe0;color:#835146;padding:8px 12px}
+
+html[lang="ko"] .dialog-paper h2{font-family:var(--korean-font)}
+.dialog-content{font-family:var(--body-font)}
+@keyframes note-pop{from{opacity:0;transform:translateY(12px) scale(.986)}to{opacity:1;transform:translateY(0) scale(1)}}
+@media (max-height:800px) and (min-width:850px){
+  .hero{flex-basis:320px;min-height:320px}
+  .hero-inner{padding-top:28px;padding-bottom:11px}
+  .hero h1{font-size:clamp(58.8px,5.88vw,79.2px)}
+  .hero-interests{margin-top:14.4px;gap:7.2px}
+  .hero-interest{padding:7.2px 12px;font-size:12px}
+  .contact-note{min-height:205px;padding-top:25px;padding-bottom:14px}
+  .folders-section{min-height:305px}
+  .section-topline{margin-bottom:20px}
+  .folder-grid{width:min(860px,100%);column-gap:42px;row-gap:16px}
+  .folder-item{gap:10px}
+  .footer{margin-top:14px}
+}
+@media (max-width:1020px){
+  .container{width:calc(100% - 64px)}
+  .hero-inner{gap:20px;grid-template-columns:minmax(0,1fr) 218px}
+  .hero h1{font-size:clamp(52.8px,6.36vw,76.8px)}
+  .folder-grid{grid-template-columns:repeat(4,minmax(0,145px));column-gap:24px}
+}
+@media (max-width:680px){
+  .container{width:calc(100% - 36px)}
+  .site-header{height:52px}
+  .landing{min-height:calc(100svh - 52px)}
+  .hero{flex-basis:auto;min-height:0}
+  .hero-inner{grid-template-columns:1fr;gap:24px;padding:48px 0 18px}
+  .hero h1{font-size:clamp(49.2px,10.8vw,70.8px)}
+  .hero-name{white-space:normal}
+  .contact-note{width:min(290px,100%);min-height:190px;justify-self:end;padding:20px 22px 18px}
+  .folders-section{padding:30px 0 26px}
+  .folder-grid{grid-template-columns:repeat(2,minmax(0,145px));width:min(355px,100%);column-gap:30px;row-gap:24px}
+  .folder-label{min-width:105px;font-size:12px}
+  .about-dialog-layout{grid-template-columns:1fr}
+  .about-photo{max-width:205px}
+  .dialog-paper{padding:52px 29px 40px}
+  .folder-dialog{padding:26px 14px}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}}
+
+/* About Me 프로필 사진 - 하늘색 폴라로이드 */
+
+.about-photo {
+  background: #AFC7D8;
+  border: 1px solid #A7C6D4;
+  padding: 10px 10px 26px;
+  box-shadow: 4px 5px 14px rgba(80, 90, 100, 0.15);
+  transform: rotate(2deg);
+}
+
+.about-photo img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3.8 / 5;
+  object-fit: cover;
+  object-position: center;
+  background: #C6DEE8;
+  border: none;
+
+  /* 사진 양옆의 검정색 선을 잘라내기 */
+  clip-path: inset(0 4% 0 4%);
+}
