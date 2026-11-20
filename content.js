@@ -56,7 +56,7 @@ const SITE_DATA = {
       },
       {
         period: 'Mar 2022 — Aug 2026',
-        title: 'Chung-Ang University',
+        title: 'Hanyang University(ERICA campus)',
         subtitle: 'B.S. · Applied Statistics'
       }
     ],
@@ -127,7 +127,7 @@ const SITE_DATA = {
       },
       {
         period: '2022.03 — 2026.02',
-        title: '중앙대학교',
+        title: '한양대학교 (에리카 캠퍼스)',
         subtitle: '학사 · 응용수학과',
       }
     ],
