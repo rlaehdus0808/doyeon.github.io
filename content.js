@@ -57,7 +57,7 @@ const SITE_DATA = {
       {
         period: 'Mar 2022 — Aug 2026',
         title: 'Hanyang University(ERICA campus)',
-        subtitle: 'B.S. · Applied Statistics'
+        subtitle: 'B.S. · Applied Mathematics'
       }
     ],
 
