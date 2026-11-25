@@ -1,16 +1,3 @@
-# Doyeon Kim — 개인 학술 홈페이지 (최종 배포용)
-
-하늘색·베이지 세로 스트라이프 배경, 이름과 연구 관심 분야, 종이클립 Contact 메모, 4개의 폴더(소개·학력·기술·프로젝트)를 사용하는 **정적 HTML 홈페이지**입니다.
-
-- 첫 화면: 영어로 고정 (`Hello!`, `I'm Doyeon Kim.`, `M.S. Student · Chung-Ang University`)
-- 오른쪽 Contact: 이메일, GitHub, 개인 홈페이지
-- 폴더 4개: About me / Education / Skills / Projects
-- 한국어/EN 버튼: **폴더 제목과 팝업 내용만** 변경
-- About me 팝업 안에서만 프로필 사진 표시
-- 별도 설치, 서버, 라이브러리 빌드 과정 **필요 없음**
-
-> **중요:** 현재 `hello@example.com`, `https://github.com/`, `https://example.com/`, 학력·프로젝트 설명 등은 전부 수정용 **예시**입니다. 실제 정보로 고친 뒤 공개하세요.
-
 ## 1. 폴더에 들어 있는 파일
 
 ```text
@@ -177,35 +164,3 @@ fontPreset: 'storybook',   // 따뜻하고 빈티지한 제목
 
 참고: 좁은 화면용 `@media` 설정에도 폴더 너비가 별도로 있으므로 필요하면 같이 조정하세요.
 
-## 7. GitHub Pages에 올리기
-
-### GitHub 웹에서 업로드
-
-1. 본인 GitHub 저장소(예: `내아이디.github.io`)를 엽니다.
-2. 저장소의 **최상위(root)** 위치에서 `Add file` → `Upload files`를 누릅니다.
-3. 압축파일 안에 있던 **`index.html`, `content.js`, `style.css`, `main.js`, `assets/` 폴더**를 올립니다. ZIP 자체를 올리는 것이 아니라 **압축을 푼 파일들**을 올립니다.
-4. 화면 아래 `Commit changes`로 저장합니다.
-5. `Settings` → `Pages`에서 `Deploy from a branch`, `main` / `/(root)`를 선택하고 저장합니다(이미 설정했으면 생략).
-6. 개인 저장소명이 `내아이디.github.io`이면 주소는 `https://내아이디.github.io/`입니다.
-
-### Git Bash에서 업로드
-
-Git 저장소 폴더에 이 파일들을 복사한 뒤:
-
-```bash
-git add index.html content.js style.css main.js assets/
-git commit -m "Update personal homepage"
-git push origin main
-```
-
-이미 같은 이름의 파일이 있다면 **덮어쓰기 전에 백업**하세요. 기존 프로젝트의 다른 파일은 삭제하지 않아도 됩니다.
-
-## 8. 자주 발생하는 문제
-
-- **체크/배경·폴더 디자인이 사라짐** → `style.css`가 `index.html`과 같은 폴더에 있는지 확인하세요.
-- **언어 버튼이나 폴더 클릭이 안 됨** → `content.js`와 `main.js`가 둘 다 같은 위치인지, `content.js`의 쉼표/따옴표가 맞는지 확인하세요.
-- **사진이 안 뜸** → `assets/profile.jpg` 등 경로, 이름, 확장자, 대소문자를 확인하세요.
-- **아무리 바꿔도 화면이 그대로임** → 변경 파일을 저장했는지, GitHub에 다시 업로드/`git push`했는지 확인하고 `Ctrl+Shift+R` 해보세요.
-- **커밋할 때 Vim 화면이 나옴** → 명령어를 `git commit -m "Update homepage"` 형태로 실행하면 별도 메시지 편집기를 열지 않습니다.
-
-홈페이지 구성: `HTML + CSS + JavaScript`, 프레임워크/빌드 도구 없음. Google Fonts는 인터넷이 연결되면 로드되며, 연결이 없어도 기본 대체 글꼴로 표시됩니다.
